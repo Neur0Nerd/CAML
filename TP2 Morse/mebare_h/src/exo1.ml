@@ -1,11 +1,9 @@
 (*Level 1 : Les lettres*)
 
 (*3.1*)
-
 let rec is_morse l = match l with 
   |e::[] when (e = '-')||(e =',') -> true
   |e::l -> (e = '-')||(e =',')&&(is_morse l);;
-
 (*is_morse ['1'; '-'];;*)
 
 (*3.2*)
@@ -21,7 +19,6 @@ let rec is_morse l = match l with
   |'7' -> ['-' ; '-' ; ',' ; ',' ; ',']
   |'8' -> ['-' ; '-' ; '-' ; ',' ; ',']
   |'9' -> ['-' ; '-' ; '-' ; '-' ; ','] *)
-  
 
 let letter_to_morse = function
   |'a' | 'A' -> ['.' ; '-']
@@ -51,5 +48,4 @@ let letter_to_morse = function
   |'y' | 'Y' -> ['-' ; '.' ; '-' ; '-']
   |'z' | 'Z' -> ['-' ; '-' ; '.' ; '.']
   | _  -> failwith "The type of your input is not a char, please try with another data";;
-
 (*letter_to_morse 'S';;*)
