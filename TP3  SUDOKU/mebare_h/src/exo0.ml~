@@ -7,14 +7,14 @@ let rec length l = match l with
 let rec flatten l = match l with
   |[] -> []
   |[]::l -> flatten l
-  |(e1::e2)::l -> e1::(flatten e2::l)   ;;
-(*flatten [[1;2;3];[4;5]];;*)
+  |(e1::e2)::l -> e1::(flatten (e2::l));;
+flatten [[1;2;3];[4;5]];;
 
 let rec check x l = match l with
   |[] -> false
   |e::[] when x=e -> true
   |e::l -> check x l;;
-check 7 [1;2;3;4;5;6];;
+(*check 7 [1;2;3;4;5;6];;*)
 
 let rec remove x l = match l with
   |[] -> []
@@ -28,7 +28,8 @@ let rec remove_all x l = match l with
   |[] -> []
   |e::[] -> l
   |e::l -> if x=e then remove_all x l
-    else e::(remove_all x l);;
+           else e::(remove_all x l);;
+
 let rec list_uniq l = match l with 
   |[] -> []
   |e::b -> e::(list_uniq (remove_all e b));;
@@ -38,21 +39,3 @@ let rec list_match l1 l2 = match (l1,l2) with
   |([],l) | (l,[]) -> list_uniq l
   |(l1,l2) -> list_uniq (flatten (l1::l2::[]));;
 (*list_match [1;2;3;5;6;8;0;0;0] [2;0;3;0;5;6;0;1;4];;*)
-
-
-
-  let rec zerolist x = match x with
-    |0 -> []
-    |x -> 0::(zerolist (x-1));;
-
-let rec grid x y = match y with
-  |0-> []
-  |y -> (zerolist x)::(grid x (y-1));;
-
-grid 2 7;;
-
-  |(0,0) -> []
-  |(0,y) -> []::(grid_make_rectangle x (y-1))
-  |(x,y) -> [0]::(grid_make_rectangle (x-1) (y));;
-  
-grid_make_rectangle 7 7;;

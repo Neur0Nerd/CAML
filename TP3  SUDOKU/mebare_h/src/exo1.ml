@@ -1,12 +1,15 @@
+(*1 Level 1 : Les Matrices ?*)
+
+(*1.1 Rectangle*)
 let rec zerolist x = match x with
     |0 -> []
     |x -> 0::(zerolist (x-1));;
-
 let rec grid_make_rectangle x y = match y with
   |0-> []
   |y -> (zerolist x)::(grid_make_rectangle x (y-1));;
 (*grid_make_rectangle 2 7;;*)
 
+(*1.2 Carré*)
 let grid_make_square x =  x x;;
 grid_make_square 7;;
 
@@ -29,6 +32,7 @@ zero x 0;;
 
 zerolist 9;;*)
 
+(*1.3 Grille*)
 let grid_make x =
   let rec l1 x n = match n with
                      |0 -> []

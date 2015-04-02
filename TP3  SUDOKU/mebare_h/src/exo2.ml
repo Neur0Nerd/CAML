@@ -1,3 +1,5 @@
+(*2 Level 2 : Les Extractions*)
+
 let grid_sample =
 [[[[5; 3; 0]; [6; 0; 0]; [0; 9; 8]];
 [[0; 7; 0]; [1; 9; 5]; [0; 0; 0]];
@@ -20,6 +22,8 @@ let grid_sample =
        
   in count grille n 1;;
 *)
+
+(*2.1 Grille*)
 let extract_square grille n =
   let rec count grille n x = match grille with
     |[] -> failwith "no match"
