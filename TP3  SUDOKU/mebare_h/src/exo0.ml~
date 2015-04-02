@@ -40,9 +40,19 @@ let rec list_match l1 l2 = match (l1,l2) with
 (*list_match [1;2;3;5;6;8;0;0;0] [2;0;3;0;5;6;0;1;4];;*)
 
 
-let rec grid_make_rectangle x y = match (x,y) with
+
+  let rec zerolist x = match x with
+    |0 -> []
+    |x -> 0::(zerolist (x-1));;
+
+let rec grid x y = match y with
+  |0-> []
+  |y -> (zerolist x)::(grid x (y-1));;
+
+grid 2 7;;
+
   |(0,0) -> []
   |(0,y) -> []::(grid_make_rectangle x (y-1))
-  |(x,y) -> 0::(grid_make_rectangle (x-1) (y));;
+  |(x,y) -> [0]::(grid_make_rectangle (x-1) (y));;
   
-grid_make_rectangle 1 7;;
+grid_make_rectangle 7 7;;
