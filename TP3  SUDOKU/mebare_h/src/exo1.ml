@@ -10,7 +10,7 @@ let rec grid_make_rectangle x y = match y with
 (*grid_make_rectangle 2 7;;*)
 
 (*1.2 Carré*)
-let grid_make_square x =  x x;;
+let grid_make_square x = grid_make_rectangle  x x;;
 grid_make_square 7;;
 
 (*let rec append liste1 liste2 =
