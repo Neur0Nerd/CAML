@@ -25,6 +25,13 @@ let grid_sample =
 
   
 (*2.1 Grille*)
+
+let rec append liste1 liste2 =
+  match liste1 with
+    [] -> liste2
+   | e::[] -> e :: liste2
+   | e::l1 -> e :: append l1 liste2;;
+  
 let extract_square grille n =
   let rec count grille n x = match grille with
     |[] -> failwith "no match"
