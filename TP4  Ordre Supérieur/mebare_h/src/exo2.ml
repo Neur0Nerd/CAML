@@ -16,8 +16,32 @@ let rec implode l = match l with
 
 (*2.2 Chiffre de César*)
 
-let s_rotn n x = match n with
-  |n when ((int_of_char x)>65 && (int_of_char x)<78) || ((int_of_char x)>97 && (int_of_char x)<110) -> char_of_int((int_of_char x) - n)
-  |n when char_of_int((int_of_char x)+n);;
-s_rotn 13 'y';;
+let s_rotn n x =
+  let i = int_of_char(x) in
+  if i>64 && i<91 then
+    let rec circle n i = match n with
+      |0 -> char_of_int(i)
+      |n when (i=90) && (n>0) -> circle (n-1) (65)
+      |n -> circle (n-1) (i+1)
+  in
+  circle n i
+  else
+    let rec circle n i = match n with
+      |0 -> char_of_int(i)
+      |n when (i=122) && (n>0) -> circle (n-1) (97)
+      |n -> circle (n-1) (i+1)
+  in
+  circle n i;;
+(*s_rotn 13 'Y';;*)
 
+let s_rot13 x = s_rotn 13 x;;
+  (*s_rot13 'Y';;*)
+
+let rot13 x =
+  let exp = explode x in
+  let rec rec_rot exp = match exp with
+    |[] -> []
+    |e::l -> (s_rot13 e)::(rec_rot l)
+  in
+  implode (rec_rot exp);;
+(*rot13 "Chiffrement";;*)
